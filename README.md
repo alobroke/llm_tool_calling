@@ -13,6 +13,7 @@ This project extends an LLM with tools such as:
 * 🌐 Web Search
 * 📧 Email Drafting
 * 📊 Data Visualization
+* 🔍 File Search (Grep)
 
 The goal is to demonstrate the basic architecture of a **tool-using LLM agent**.
 
@@ -129,6 +130,18 @@ The generated chart is saved inside:
 outputs/charts/
 ```
 
+### 4. Grep
+
+Used to find text inside files in a directory.
+
+Example:
+
+```text
+Find call_llm in the project files.
+```
+
+The tool searches files recursively and returns matching file paths, line numbers, and lines of text.
+
 ## 🔄 Tool Calling Workflow
 
 The basic workflow is:
@@ -215,6 +228,12 @@ January 120
 February 150
 March 180
 April 210
+```
+
+### Grep
+
+```text
+Find create_visualization in tools.py
 ```
 
 ## 🎯 Project Objective
