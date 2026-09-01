@@ -120,8 +120,33 @@ def create_visualization(
 
 
 
+@tool
+def grep(search: str, path: str = ".") -> str:
+    """Find lines containing text in files under a directory."""
+    matches = []
+
+    try:
+        for root, _, files in os.walk(path):
+            for file in files:
+                file_path = os.path.join(root, file)
+                try:
+                    with open(file_path, "r", encoding="utf-8") as f:
+                        for line_number, line in enumerate(f, 1):
+                            if search.lower() in line.lower():
+                                matches.append(f"{file_path}:{line_number}: {line.strip()}")
+                except (UnicodeDecodeError, PermissionError, IsADirectoryError):
+                    continue
+
+        if matches:
+            return "\n".join(matches)
+        return f"No matches found for: {search}"
+    except Exception as e:
+        return f"Grep failed: {str(e)}"
+
+
 tools = [
     web_search,
     email_tool,
-    create_visualization
+    create_visualization,
+    grep
 ]

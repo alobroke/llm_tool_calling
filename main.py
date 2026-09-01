@@ -47,6 +47,7 @@ You have access to tools:
 - web_search: Search the web for information.
 - email_tool: Create an email draft.
 - create_visualization: Create charts from data.
+- grep: Find text in files.
 
 Use a tool when it is necessary to answer the user's request.
 """
